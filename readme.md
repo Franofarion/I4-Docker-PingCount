@@ -21,7 +21,7 @@ Lancer le fichier install_start_server.sh avec la commande :
     
 Il est possible que nous n'aviez pas les droits, dans ce cas là :
 
-    chmod 777 install_start_server.sh
+    chmod 775 install_start_server.sh
 
 Puis lancer le serveur avec le fichier.
 
