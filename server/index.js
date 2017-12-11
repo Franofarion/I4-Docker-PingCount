@@ -28,11 +28,11 @@ app.get('/', function (req, res) {
 
 app.get('/ping', function (req, res) {
   count++;
-  res.send({"message":'pong'});
+  res.send(JSON.stringify({message:'pong'}));
 })
 
 app.get('/count', function (req, res) {
-  res.send({"pingCount":count.toString()})
+  res.send(JSON.stringify({pingCount:count}))
 })
 
 // 404
