@@ -1,4 +1,5 @@
 #!/bin/bash
+#Check if jq (used to parse json) is installed on user's computer
 if ! [ -x "$(command -v jq)" ]; then
 	printf "Installation de jq pour les tests unitaire"
 	sudo apt get install jq
@@ -6,11 +7,12 @@ else
 	printf "jq déjà installé sur votre poste"
 fi
 
-
+#Clear the console
 clear
 $TESTPASSED
 printf "Lancements des tests unitaires de PingCount : \n\n\n" 
 
+#TEST 1/3
 printf "Test localhost:3000 : It should respond something:\n"
 MESSAGE=$(curl localhost:3000/ -s | grep Hello)
 echo $MESSAGE
@@ -21,7 +23,7 @@ else
 	printf "Test not passed"
 fi
 
-
+#TEST 2/3
 printf "\n\nTest localhost:3000/ping : It should respond pong:\n"
 PONG=$(curl -s localhost:3000/ping -w "\n" | jq -r '.message')
 echo $PONG 
@@ -32,6 +34,7 @@ else
 	printf "Test not passed"
 fi
 
+#TEST 3/3
 NUMBER=$[ ( $RANDOM % 10 )  + 1 ]
 printf "\n\nTest localhost:3000/count : It should add %s to current count\n" "$NUMBER"
 BASE=$(curl -s localhost:3000/count -w "\n" | jq -r '.pingCount') 
