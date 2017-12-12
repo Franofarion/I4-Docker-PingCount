@@ -52,4 +52,4 @@ else
 	printf "Test not passed\n"
 fi
 
-printf "\n\n%s/3 tests passed" "$TESTPASSED"
+printf "\n\n%s/3 tests passed \n" "$TESTPASSED"
